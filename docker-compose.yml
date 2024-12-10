@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:13.3
+    environment:
+      POSTGRES_DB: "profile"
+      POSTGRES_USER: "profile"
+      POSTGRES_PASSWORD: "profile123"
+    volumes:
+      - .:/docker-entrypoint-initdb.d
+    ports:
+      - "5432:5432"
+
+  profile:
+    build:
+      context: ./profile
+      dockerfile: Dockerfile
